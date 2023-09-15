@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: groundhog
+
+  r2dbc:
+    url: r2dbc:postgresql://127.0.0.1:5432/groundhog_day
+    username: syedibnazubayear
+    password:
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 15

@@ -1,0 +1,96 @@
+scalar LocalDate
+
+
+input ScholarshipInput {
+    title:String
+    description:String
+    lastDate:LocalDate
+    daysLeft:Int
+    total:Int
+    purpose:String
+    sorts:[SortInput!]
+}
+
+input OrganisationInput {
+    orgName:String
+    originCountry:String
+    founded:Int
+}
+
+input RequirementInput {
+    title:String
+    description:String
+}
+
+input CreateScholarshipInput {
+    title: String!
+    description: String!
+    lastDate: LocalDate
+    daysLeft: Int!
+    total: Int!
+    purpose: String!
+    organisationsId: ID!
+}
+
+input CreateOrganisationInput {
+    orgName:String!
+    description:String!
+    originCountry:String!
+    founded:Int!
+}
+
+input CreateRequirementInput {
+    title:String!
+    description:String!
+    scholarshipsId:ID!
+}
+
+type Mutation {
+    createScholarship(input: CreateScholarshipInput!): Scholarship!
+    createOrganisation(input: CreateOrganisationInput!): Organisation!
+    createRequirement(input: CreateRequirementInput!): Requirement!
+}
+
+type Organisation {
+    id:ID!
+    orgName:String!
+    originCountry:String!
+    founded:Int!
+    scholarships:[Scholarship]
+}
+
+type Query {
+    scholarships(scholarshipInput: ScholarshipInput): [Scholarship]
+    scholarshipById(id: ID!): Scholarship
+    organisations(organisationInput: OrganisationInput): [Organisation]
+    organisationById(id: ID!): Organisation
+    requirements(requirementInput: RequirementInput): [Requirement]
+    requirementById(id: ID!): Requirement
+}
+
+type Requirement {
+    id:ID!
+    title:String!
+    description:String!
+}
+
+type Scholarship {
+    id:ID!
+    title:String
+    description:String
+    lastDate:LocalDate
+    daysLeft:Int
+    total:Int
+    purpose:String
+    requirements:[Requirement]
+}
+
+enum SortDirection {
+    ASCENDING
+    DESCENDING
+}
+
+input SortInput {
+    field: String!
+    direction: SortDirection!
+}
