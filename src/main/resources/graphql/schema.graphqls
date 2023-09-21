@@ -4,8 +4,8 @@ scalar LocalDate
 input ScholarshipInput {
     title:String
     description:String
-    lastDate:LocalDate
-    daysLeft:Int
+    last_date:LocalDate
+    days_left:Int
     total:Int
     purpose:String
     sorts:[SortInput!]
@@ -13,7 +13,7 @@ input ScholarshipInput {
 
 input OrganisationInput {
     orgName:String
-    originCountry:String
+    origin_country:String
     founded:Int
 }
 
@@ -25,24 +25,24 @@ input RequirementInput {
 input CreateScholarshipInput {
     title: String!
     description: String!
-    lastDate: LocalDate
-    daysLeft: Int!
+    last_date: LocalDate
+    days_left: Int!
     total: Int!
     purpose: String!
-    organisationsId: ID!
+    organisations_id: ID!
 }
 
 input CreateOrganisationInput {
-    orgName:String!
+    org_name:String!
     description:String!
-    originCountry:String!
+    origin_country:String!
     founded:Int!
 }
 
 input CreateRequirementInput {
     title:String!
     description:String!
-    scholarshipsId:ID!
+    scholarships_id:ID!
 }
 
 type Mutation {
@@ -52,10 +52,10 @@ type Mutation {
 }
 
 type Organisation {
-    id:ID!
-    orgName:String!
-    originCountry:String!
-    founded:Int!
+    id:ID
+    org_name:String
+    origin_country:String
+    founded:Int
     scholarships:[Scholarship]
 }
 
@@ -69,17 +69,17 @@ type Query {
 }
 
 type Requirement {
-    id:ID!
-    title:String!
-    description:String!
+    id:ID
+    title:String
+    description:String
 }
 
 type Scholarship {
-    id:ID!
+    id:ID
     title:String
     description:String
-    lastDate:LocalDate
-    daysLeft:Int
+    last_date:LocalDate
+    days_left:Int
     total:Int
     purpose:String
     requirements:[Requirement]

@@ -1,4 +1,4 @@
-package com.zubayear.groundhog.model;
+package com.zubayear.groundhog.model.ginput;
 
 public enum SortDirection {
     ASCENDING,
